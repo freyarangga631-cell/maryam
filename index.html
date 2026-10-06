@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spesial buat maryamkuu ❤</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at center, #ff9a9e 0%, #fecfef 50%, #feada6 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- HUJAN BUNGA & EFEK KELOPAK --- */
+        .flower-rain {
+            position: fixed;
+            top: -15%;
+            z-index: 1;
+            pointer-events: none;
+            user-select: none;
+            animation: fallAnimation linear infinite;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+        }
+
+        @keyframes fallAnimation {
+            0% { transform: translateY(0) rotate(0deg) scale(0.9); opacity: 1; }
+            100% { transform: translateY(115vh) rotate(360deg) scale(1.3); opacity: 0.2; }
+        }
+
+        .fl-1 { left: 2%; animation-duration: 5s; animation-delay: 0s; font-size: 38px; }
+        .fl-2 { left: 9%; animation-duration: 7s; animation-delay: 2s; font-size: 42px; }
+        .fl-3 { left: 16%; animation-duration: 4.5s; animation-delay: 1s; font-size: 32px; }
+        .fl-4 { left: 23%; animation-duration: 8s; animation-delay: 3s; font-size: 45px; }
+        .fl-5 { left: 30%; animation-duration: 6s; animation-delay: 0.5s; font-size: 36px; }
+        .fl-6 { left: 37%; animation-duration: 5.5s; animation-delay: 2.5s; font-size: 40px; }
+        .fl-7 { left: 44%; animation-duration: 7.5s; animation-delay: 1.5s; font-size: 34px; }
+        .fl-8 { left: 51%; animation-duration: 4.8s; animation-delay: 3.5s; font-size: 48px; }
+        .fl-9 { left: 58%; animation-duration: 6.8s; animation-delay: 0.8s; font-size: 35px; }
+        .fl-10 { left: 65%; animation-duration: 8.5s; animation-delay: 2.2s; font-size: 44px; }
+        .fl-11 { left: 72%; animation-duration: 5.2s; animation-delay: 1.2s; font-size: 38px; }
+        .fl-12 { left: 79%; animation-duration: 7.2s; animation-delay: 3.8s; font-size: 46px; }
+        .fl-13 { left: 86%; animation-duration: 6.2s; animation-delay: 0.3s; font-size: 33px; }
+        .fl-14 { left: 93%; animation-duration: 8.2s; animation-delay: 1.8s; font-size: 40px; }
+
+        .floating-heart {
+            position: fixed;
+            bottom: -10%;
+            z-index: 1;
+            pointer-events: none;
+            animation: floatUp 9s ease-in-out infinite;
+            font-size: 28px;
+            opacity: 0.7;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(0.8); opacity: 0.2; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-115vh) scale(1.4); opacity: 0; }
+        }
+
+        /* --- KARTU UTAMA --- */
+        .card-container {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(18px);
+            border-radius: 28px;
+            box-shadow: 0 20px 50px rgba(255, 71, 87, 0.35), 0 0 30px rgba(255, 255, 255, 0.8);
+            max-width: 550px;
+            width: 100%;
+            padding: 45px 30px 35px;
+            position: relative;
+            z-index: 10;
+            border: 3px solid #ffffff;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .corner-flower {
+            position: absolute;
+            font-size: 32px;
+            pointer-events: none;
+            z-index: 11;
+        }
+        .top-left { top: -18px; left: -18px; transform: rotate(-20deg); }
+        .top-right { top: -18px; right: -18px; transform: rotate(20deg); }
+        .bottom-left { bottom: -18px; left: -18px; transform: rotate(-40deg); }
+        .bottom-right { bottom: -18px; right: -18px; transform: rotate(40deg); }
+
+        /* --- MUSIC PLAYER BAR (POJOK KANAN ATAS) --- */
+        .music-player-bar {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 234, 167, 0.95);
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 2px solid #fdcb6e;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+            z-index: 15;
+        }
+
+        .music-btn {
+            background: transparent;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            padding: 0;
+            box-shadow: none;
+            line-height: 1;
+        }
+        .music-btn:hover { transform: scale(1.2); }
+
+        .song-title-badge {
+            font-size: 11px;
+            font-weight: bold;
+            color: #d63031;
+            max-width: 120px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* --- KEYFRAMES TRANSISI --- */
+        @keyframes slideInRight {
+            0% { opacity: 0; transform: translateX(50px) scale(0.92) rotate(1.5deg); }
+            100% { opacity: 1; transform: translateX(0) scale(1) rotate(0deg); }
+        }
+
+        @keyframes slideOutLeft {
+            0% { opacity: 1; transform: translateX(0) scale(1) rotate(0deg); }
+            100% { opacity: 0; transform: translateX(-50px) scale(0.92) rotate(-1.5deg); }
+        }
+
+        @keyframes slideInLeft {
+            0% { opacity: 0; transform: translateX(-50px) scale(0.92) rotate(-1.5deg); }
+            100% { opacity: 1; transform: translateX(0) scale(1) rotate(0deg); }
+        }
+
+        @keyframes slideOutRight {
+            0% { opacity: 1; transform: translateX(0) scale(1) rotate(0deg); }
+            100% { opacity: 0; transform: translateX(50px) scale(0.92) rotate(1.5deg); }
+        }
+
+        .screen {
+            display: none;
+            opacity: 0;
+            will-change: transform, opacity;
+        }
+
+        .screen.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .screen.animate-in-forward {
+            display: block;
+            animation: slideInRight 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .screen.animate-out-forward {
+            display: block;
+            animation: slideOutLeft 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .screen.animate-in-backward {
+            display: block;
+            animation: slideInLeft 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .screen.animate-out-backward {
+            display: block;
+            animation: slideOutRight 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .form-step {
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .form-step.step-enter-right {
+            animation: slideInRight 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .form-step.step-enter-left {
+            animation: slideInLeft 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        /* --- AMPLOP SURAT 3D --- */
+        .envelope-container {
+            position: relative;
+            width: 240px;
+            height: 160px;
+            margin: 30px auto 20px;
+            cursor: pointer;
+            perspective: 800px;
+            transition: transform 0.3s ease;
+        }
+
+        .envelope-container:hover {
+            transform: scale(1.04);
+        }
+
+        .envelope-body {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #ff6b81;
+            border-radius: 12px;
+            box-shadow: 0 12px 25px rgba(255, 71, 87, 0.3);
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 120px solid transparent;
+            border-right: 120px solid transparent;
+            border-top: 95px solid #ff4757;
+            transform-origin: top;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 4;
+        }
+
+        .envelope-pocket {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 120px solid #ff758c;
+            border-right: 120px solid #ff758c;
+            border-bottom: 90px solid #ff4757;
+            border-radius: 0 0 12px 12px;
+            z-index: 3;
+        }
+
+        .letter-paper {
+            position: absolute;
+            bottom: 10px;
+            left: 15px;
+            width: 210px;
+            height: 130px;
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            z-index: 2;
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .envelope-seal {
+            position: absolute;
+            top: 70px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 32px;
+            z-index: 5;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
+        }
+
+        .envelope-container.open .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        .envelope-container.open .letter-paper {
+            transform: translateY(-85px) scale(1.05);
+            z-index: 5;
+        }
+
+        .envelope-container.open .envelope-seal {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(1.5);
+        }
+
+        /* --- FOTO TANPA EFEK --- */
+        .photo-wrapper {
+            position: relative;
+            width: 170px;
+            height: 170px;
+            margin: 15px auto;
+            border-radius: 50%;
+        }
+
+        .photo-frame {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ff4757;
+        }
+
+        .title-gombal {
+            color: #ff2a55;
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 15px 0;
+        }
+
+        .badge {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            color: #d63031;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 3px 8px rgba(255, 107, 129, 0.2);
+            border: 1px solid #ffeaa7;
+        }
+
+        .romantic-letter-card {
+            background: linear-gradient(145deg, #ffffff 0%, #fff5f7 100%);
+            border: 2px solid #ffccd5;
+            border-radius: 24px;
+            padding: 28px 22px 22px;
+            margin: 22px 0 18px;
+            text-align: left;
+            position: relative;
+            box-shadow: 0 12px 30px rgba(255, 71, 87, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.8);
+            border-top: 5px solid #ff4757;
+        }
+
+        .letter-header-tag {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #ff4757, #ff6b81);
+            color: white;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 4px 16px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(255, 71, 87, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .letter-quote-icon {
+            position: absolute;
+            bottom: 12px;
+            right: 16px;
+            font-size: 32px;
+            opacity: 0.15;
+            color: #ff4757;
+            user-select: none;
+        }
+
+        .typing-box {
+            font-size: 14px;
+            color: #333333;
+            line-height: 1.8;
+            font-weight: 500;
+            min-height: 100px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cursor-blink {
+            display: inline-block;
+            width: 2px;
+            height: 15px;
+            background-color: #ff4757;
+            margin-left: 2px;
+            animation: blink 0.8s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background-color: #ffd1d7;
+            border-radius: 50%;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .dot.active {
+            width: 35px;
+            border-radius: 12px;
+            background-color: #ff4757;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: #2f3542;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        input[type="text"], input[type="password"], textarea, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ffccd5;
+            border-radius: 12px;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: #ff4757;
+            box-shadow: 0 0 10px rgba(255, 71, 87, 0.25);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            flex: 1;
+            background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+        }
+
+        button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 22px rgba(255, 71, 87, 0.5);
+        }
+
+        button:active {
+            transform: translateY(1px) scale(0.98);
+        }
+
+        button.btn-secondary {
+            background: #e4e6eb;
+            color: #4b4b4b;
+            box-shadow: none;
+        }
+
+        button.btn-secondary:hover {
+            background: #d8dadf;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 12px;
+            color: #a4b0be;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PEMUTAR MUSIK DENGAN AUDIO ELEMENT -->
+    <audio id="bgMusic" loop>
+        <source id="musicSource" src="https://cdn.pixabay.com/download/audio/2022/10/14/audio_993f345862.mp3?filename=to-love-you-more-romantic-piano-12345.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- HUJAN BUNGA & HATI MELAYANG -->
+    <div class="flower-rain fl-1">🌸</div>
+    <div class="flower-rain fl-2">🌺</div>
+    <div class="flower-rain fl-3">🌹</div>
+    <div class="flower-rain fl-4">🌷</div>
+    <div class="flower-rain fl-5">🌸</div>
+    <div class="flower-rain fl-6">🌻</div>
+    <div class="flower-rain fl-7">🌺</div>
+    <div class="flower-rain fl-8">🌹</div>
+    <div class="flower-rain fl-9">🌸</div>
+    <div class="flower-rain fl-10">🌷</div>
+    <div class="flower-rain fl-11">🌺</div>
+    <div class="flower-rain fl-12">🌸</div>
+    <div class="flower-rain fl-13">🌹</div>
+    <div class="flower-rain fl-14">🌷</div>
+
+    <div class="floating-heart" style="left: 10%;">💖</div>
+    <div class="floating-heart" style="left: 32%; animation-delay: 2s;">💕</div>
+    <div class="floating-heart" style="left: 65%; animation-delay: 4s;">💗</div>
+    <div class="floating-heart" style="left: 88%; animation-delay: 1s;">💓</div>
+
+    <div class="card-container">
+        <!-- PLAYER BAR MUSIK (POJOK KANAN ATAS) -->
+        <div class="music-player-bar">
+            <button class="music-btn" onclick="toggleMusic()" id="playPauseBtn" title="Play/Pause">🎵</button>
+            <span class="song-title-badge" id="currentSongTitle">To Love You More</span>
+            <button class="music-btn" onclick="nextSong()" title="Ganti Lagu">⏭️</button>
+        </div>
+
+        <div class="corner-flower top-left">🌺</div>
+        <div class="corner-flower top-right">🌸</div>
+        <div class="corner-flower bottom-left">🌷</div>
+        <div class="corner-flower bottom-right">🌹</div>
+
+        <!-- 1. SCREEN PASSWORD -->
+        <div class="screen active" id="passScreen">
+            <div style="font-size: 60px; margin-bottom: 10px;">🔒🔑💖</div>
+            <h2 style="color: #ff2a55; margin-bottom: 10px;">Area Khusus Pacarku!</h2>
+            <p style="font-size: 13px; color: #666; margin-bottom: 20px;">Masukkan password rahasia kita untuk masuk yaa ✨</p>
+            
+            <div class="form-group">
+                <input type="password" id="passInput" placeholder="Ketik kata kunci (contoh: sayang)" style="text-align: center;">
+            </div>
+            
+            <p id="errorMsg" style="color: #ff4757; font-size: 12px; display: none; margin-bottom: 10px; font-weight: bold;"></p>
+            
+            <button type="button" onclick="checkPassword()">Buka Rahasia 💌</button>
+            <p style="font-size: 11px; color: #a4b0be; margin-top: 15px;">*Hint: coba ketik "tanggal bulan jadian kita"</p>
+        </div>
+
+        <!-- 2. SCREEN SURAT TEKAN UNTUK BUKA (3D) -->
+        <div class="screen" id="envelopeScreen">
+            <h2 style="color: #ff2a55; margin-bottom: 8px;">Ada Surat Rahasia Buat Kamu! 💌</h2>
+            <p style="font-size: 13px; color: #666;">Tekan amplop di bawah ini untuk membukanya...</p>
+
+            <div class="envelope-container" id="envelopeWrapper" onclick="openEnvelope()">
+                <div class="envelope-body"></div>
+                <div class="envelope-pocket"></div>
+                <div class="letter-paper">
+                    <span style="font-size: 24px;">💌</span>
+                    <p style="font-size: 11px; font-weight: bold; color: #ff4757; margin-top: 5px;">i love you Maryam 💕</p>
+                </div>
+                <div class="envelope-flap"></div>
+                <div class="envelope-seal">💖</div>
+            </div>
+
+            <p style="font-size: 12px; color: #ff4757; font-weight: bold;">👇 Sentuh Amplopnya! 👇</p>
+        </div>
+
+        <!-- 3. SCREEN PEMBUKA BUCIN & FOTO -->
+        <div class="screen" id="bucinScreen">
+            <div class="photo-wrapper">
+                <img src="foto.jpeg" id="couplePhoto" class="photo-frame" alt="Foto Pasangan">
+            </div>
+            <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="loadPhoto(event)">
+
+            <h1 class="title-gombal">Halo My lovee My sweetheart! 🥰</h1>
+
+            <div class="badge-container">
+                <span class="badge">❤ Sayangku: unlimited</span>
+                <span class="badge">🔒 Status: Terkunci Selamanya</span>
+                <span class="badge">🌸 Level Cantik: Maksimal</span>
+            </div>
+
+            <!-- LEMBAR PESAN UNIK -->
+            <div class="romantic-letter-card">
+                <div class="letter-header-tag">✨ SURAT CINTA SPESIAL ✨</div>
+                <div class="typing-box">
+                    <span id="typingText"></span><span class="cursor-blink"></span>
+                </div>
+                <div class="letter-quote-icon">💌</div>
+            </div>
+
+            <button type="button" onclick="goToFormStep(1)">Lanjut ke Formulir Hubungan 👉</button>
+        </div>
+
+        <!-- 4. FORMULIR HUBUNGAN 3 STEP -->
+        <div class="screen" id="formScreen">
+            <div class="step-indicator">
+                <div class="dot active" id="dot1"></div>
+                <div class="dot" id="dot2"></div>
+                <div class="dot" id="dot3"></div>
+            </div>
+
+            <!-- STEP 1 -->
+            <div id="step1" class="form-step">
+                <h2 style="color: #ff4757; text-align: center; margin-bottom: 15px; font-size: 18px;">Langkah 1: Perasaan & Kebahagiaan ✨</h2>
+                
+                <div class="form-group">
+                    <label>1. Gimana perasaan kamu selama jalanin hubungan sama aku sejauh ini?</label>
+                    <select id="kebahagiaan">
+                        <option value="" disabled selected>Pilih perasaanmu...</option>
+                        <option value="Sangat Bahagia & Nyaman 🌟">Sangat Bahagia & Nyaman 🌟</option>
+                        <option value="Bahagia Bangeet 😊">Bahagia Bangeet 😊</option>
+                        <option value="Lumayan / Biasa Aja 😐">Lumayan / Biasa Aja 😐</option>
+                        <option value="Lagi Ada Rasa Renggang/Ganjel 💔">Lagi Ada Rasa Renggang/Ganjel 💔</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>2. Hal atau momen apa dari aku yang paling bikin kamu senang/tersentuh?</label>
+                    <textarea id="halDisukai" rows="3" placeholder="Contoh: Waktu kamu dengerin cerita aku, pas kita jalan bareng..."></textarea>
+                </div>
+
+                <div class="btn-group">
+                    <button type="button" onclick="goToFormStep(2, 'forward')">Lanjut ke Langkah 2 👉</button>
+                </div>
+            </div>
+
+            <!-- STEP 2 -->
+            <div id="step2" class="form-step" style="display: none;">
+                <h2 style="color: #ff4757; text-align: center; margin-bottom: 15px; font-size: 18px;">Langkah 2: Evaluasi & Kritik Hangat 💌</h2>
+
+                <div class="form-group">
+                    <label>3. Ada sikap atau sifat aku yang bikin kamu sebel/kurang suka?</label>
+                    <textarea id="kritik" rows="3" placeholder="Jujur aja yaa, aku siap denger dan belajar jadi lebih baik..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>4. Saran atau harapan kamu buat hubungan kita ke depannya?</label>
+                    <textarea id="saran" rows="3" placeholder="Contoh: Lebih sering komunikasi, jadwalin jalan-jalan..."></textarea>
+                </div>
+
+                <div class="btn-group">
+                    <button type="button" class="btn-secondary" onclick="goToFormStep(1, 'backward')">👈 Kembali</button>
+                    <button type="button" onclick="goToFormStep(3, 'forward')">Lanjut ke Langkah 3 👉</button>
+                </div>
+            </div>
+
+            <!-- STEP 3 -->
+            <div id="step3" class="form-step" style="display: none;">
+                <h2 style="color: #ff4757; text-align: center; margin-bottom: 15px; font-size: 18px;">Langkah 3: Pesan Manis & Selesai 💕</h2>
+
+                <div class="form-group">
+                    <label>5. Pesan bebas/tambahan buat aku?</label>
+                    <textarea id="pesanTambahan" rows="3" placeholder="Tulis apa aja ucapan manis atau harapanmu..."></textarea>
+                </div>
+
+                <div class="btn-group">
+                    <button type="button" class="btn-secondary" onclick="goToFormStep(2, 'backward')">👈 Kembali</button>
+                    <button type="button" onclick="kirimKeWA()">Kirim Jawaban ke WA 💖</button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            Dibuat penuh cinta khusus buat kamu Maryam Khalid Abdullah Al Ghamdi 💕
+        </footer>
+    </div>
+
+    <script>
+        /* --- DAFTAR PLAYLIST LAGU --- */
+        const playlist = [
+            {
+                title: "To Love You More",
+                src: "to-love-you-more_2.mp3"
+            },
+            {
+                title: "To Love You More",
+                src: "to-love-you-more.mp3"
+            }
+        ];
+
+        let currentSongIndex = 0;
+        const bgMusic = document.getElementById('bgMusic');
+        const currentSongTitle = document.getElementById('currentSongTitle');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+
+        function playSongAtIndex(index) {
+            currentSongIndex = index;
+            bgMusic.src = playlist[currentSongIndex].src;
+            bgMusic.play().then(() => {
+                playPauseBtn.innerText = "⏸️";
+            }).catch(() => {});
+
+            currentSongTitle.innerText = playlist[currentSongIndex].title;
+        }
+
+        function toggleMusic() {
+            if (bgMusic.paused) {
+                bgMusic.play();
+                playPauseBtn.innerText = "⏸️";
+            } else {
+                bgMusic.pause();
+                playPauseBtn.innerText = "🎵";
+            }
+        }
+
+        function nextSong() {
+            currentSongIndex = (currentSongIndex + 1) % playlist.length;
+            playSongAtIndex(currentSongIndex);
+        }
+
+        // FUNGSI ANIMASI TRANSISI HALAMAN DUA ARAH
+        let currentStep = 1;
+
+        function switchScreen(fromId, toId, direction = 'forward', callback) {
+            const fromEl = document.getElementById(fromId);
+            const toEl = document.getElementById(toId);
+
+            const outClass = direction === 'forward' ? 'animate-out-forward' : 'animate-out-backward';
+            const inClass = direction === 'forward' ? 'animate-in-forward' : 'animate-in-backward';
+
+            fromEl.className = 'screen ' + outClass;
+
+            setTimeout(() => {
+                fromEl.style.display = 'none';
+                fromEl.className = 'screen';
+
+                toEl.style.display = 'block';
+                toEl.className = 'screen ' + inClass;
+
+                setTimeout(() => {
+                    toEl.className = 'screen active';
+                    if (callback) callback();
+                }, 650);
+            }, 450);
+        }
+
+        // CEK PASSWORD
+        function checkPassword() {
+            const pass = document.getElementById('passInput').value.toLowerCase().trim();
+            const validPasswords = ['muah', '0203', 'bebek', 'love', 'pacar'];
+            
+            if (validPasswords.includes(pass)) {
+                switchScreen('passScreen', 'envelopeScreen', 'forward');
+                playSongAtIndex(0);
+            } else {
+                const errorMsg = document.getElementById('errorMsg');
+                errorMsg.style.display = 'block';
+                errorMsg.innerText = 'Password salah manis! Coba ketik tanggal bulan jadian kita 😉';
+            }
+        }
+
+        // BUKA AMPLOP 3D
+        function openEnvelope() {
+            const wrapper = document.getElementById('envelopeWrapper');
+            if (wrapper.classList.contains('open')) return;
+
+            wrapper.classList.add('open');
+            
+            setTimeout(() => {
+                switchScreen('envelopeScreen', 'bucinScreen', 'forward', startTypingEffect);
+            }, 1000);
+        }
+
+        // EFEK MENGETIK PADA PESAN UCAPAN
+        const letterContent = "Tauu gaaakk sayyyaaannnggkkuuu? Seperti lagu 'To Love You More', aku bakal selalu ada di sini untuk mencintai dan mendukung kamu dalam keadaan apa pun aku akan mencintaimu selamanya. 🌸\nHalaman ini aku buat khusus untuk kita—tempat kamu bisa cerita jujur, luapin isi hati, dan kasih masukan buat aku!";
+        let typingIndex = 0;
+
+        function startTypingEffect() {
+            const typingBox = document.getElementById('typingText');
+            typingBox.innerHTML = '';
+            typingIndex = 0;
+            typeNextChar();
+        }
+
+        function typeNextChar() {
+            if (typingIndex < letterContent.length) {
+                const char = letterContent.charAt(typingIndex);
+                if (char === '\n') {
+                    document.getElementById('typingText').innerHTML += '<br><br>';
+                } else {
+                    document.getElementById('typingText').innerHTML += char;
+                }
+                typingIndex++;
+                setTimeout(typeNextChar, 35);
+            }
+        }
+
+        // UPLOAD FOTO PASANGAN
+        function loadPhoto(event) {
+            const image = document.getElementById('couplePhoto');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        }
+
+        // NAVIGASI FORM 3 STEP
+        function goToFormStep(stepNumber, direction = 'forward') {
+            const bucinScreen = document.getElementById('bucinScreen');
+
+            if (bucinScreen.classList.contains('active')) {
+                switchScreen('bucinScreen', 'formScreen', 'forward');
+            }
+
+            const activeStepEl = document.getElementById('step' + currentStep);
+            const targetStepEl = document.getElementById('step' + stepNumber);
+
+            if (activeStepEl && currentStep !== stepNumber) {
+                const animClass = direction === 'forward' ? 'step-enter-right' : 'step-enter-left';
+                
+                activeStepEl.style.display = 'none';
+                activeStepEl.classList.remove('step-enter-right', 'step-enter-left');
+
+                targetStepEl.style.display = 'block';
+                targetStepEl.classList.remove('step-enter-right', 'step-enter-left');
+                void targetStepEl.offsetWidth; // Trigger reflow
+                targetStepEl.classList.add(animClass);
+
+                currentStep = stepNumber;
+            }
+
+            document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
+            document.getElementById('dot' + stepNumber).classList.add('active');
+        }
+
+        // KIRIM KE WHATSAPP
+        function kirimKeWA() {
+    const nomorWA = "6285775270425";
+
+    const kebahagiaan = document.getElementById('kebahagiaan').value;
+    const halDisukai = document.getElementById('halDisukai').value;
+    const kritik = document.getElementById('kritik').value;
+    const saran = document.getElementById('saran').value;
+    const pesanTambahan = document.getElementById('pesanTambahan').value || "-";
+
+    if (!kebahagiaan || !halDisukai || !kritik || !saran) {
+        alert("Tolong isi semua pertanyaannya dulu ya sayang! ❤️");
+        return;
+    }
+
+    const isiPesan = `Halo sayangkuu! Ini jawaban aku dari web yang kamu buat:
+
+1. *Perasaan saat ini:*
+${kebahagiaan}
+
+2. *Momen/hal favorit:*
+${halDisukai}
+
+3. *Kritik/hal yang perlu diperbaiki:*
+${kritik}
+
+4. *Saran & harapan ke depan:*
+${saran}
+
+5. *Pesan tambahan:*
+${pesanTambahan}`;
+
+    window.open(`https://wa.me/${6285775270425}?text=${encodeURIComponent(isiPesan)}`, '_blank');
+}
+    </script>
+</body>
+</html>
